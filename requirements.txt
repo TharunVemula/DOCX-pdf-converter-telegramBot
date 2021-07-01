@@ -1,0 +1,5 @@
+os
+pdf2docx
+telegram
+docx2pdf
+python-telegram-bot
