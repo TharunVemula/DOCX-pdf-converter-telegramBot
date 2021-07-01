@@ -3,7 +3,8 @@ from pdf2docx import Converter
 from telegram.ext import *
 from telegram import *
 import docx2pdf
-
+from server import keep_alive
+import subprocess
 import time
 
 
@@ -33,7 +34,6 @@ def pdf_handler(update, context):
 
 
 def docx_handler(update, context):
-    updater.idle()
     fileid = update.message.document
     file = bot.get_file(fileid.file_id)
     filename = fileid.file_name
@@ -48,7 +48,9 @@ def docx_handler(update, context):
     bot.send_document(chat_id=update.effective_chat.id, document=open(filename.split(".")[0] + ".pdf", 'rb'))
 
 
-
+keep_alive()
+bot = Bot("1851398478:AAEbS4xwXNHSmyA5HvpFj8rU84uuXLtltnc")
+updater = Updater("1851398478:AAEbS4xwXNHSmyA5HvpFj8rU84uuXLtltnc", use_context=True)
 dp = updater.dispatcher
 dp.add_handler(CommandHandler("Start", start))
 dp.add_handler(MessageHandler(Filters.document.pdf, pdf_handler))
