@@ -48,8 +48,8 @@ def docx_handler(update, context):
     bot.send_document(chat_id=update.effective_chat.id, document=open(filename.split(".")[0] + ".pdf", 'rb'))
 
 
-bot = Bot(<token>)
-updater = Updater(<token>, use_context=True)
+bot = Bot("1851398478:AAEbS4xwXNHSmyA5HvpFj8rU84uuXLtltnc")
+updater = Updater("1851398478:AAEbS4xwXNHSmyA5HvpFj8rU84uuXLtltnc", use_context=True)
 dp = updater.dispatcher
 dp.add_handler(CommandHandler("Start", start))
 dp.add_handler(MessageHandler(Filters.document.pdf, pdf_handler))
